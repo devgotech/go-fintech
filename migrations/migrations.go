@@ -2,7 +2,7 @@ package migrations
 
 import (
 	"github.com/jamesgotech/go-bank-backend/helpers"
-	interfaces "github.com/jamesgotech/go-bank-backend/interfaces"
+	"github.com/jamesgotech/go-bank-backend/interfaces"
 )
 
 func createAccounts() {
@@ -29,7 +29,17 @@ func Migrate() {
 	User := &interfaces.User{}
 	Account := &interfaces.Account{}
 	db := helpers.ConnectDB()
-	db.AutoMigrate(&User{}, &Account{})
+	db.AutoMigrate(&User, &Account)
+	defer db.Close()
+
+	createAccounts()
+}
+
+func MigrateTransactions() {
+	Transactions := &interfaces.Transaction{}
+
+	db := helpers.ConnectDB()
+	db.AutoMigrate(&Transactions)
 	defer db.Close()
 
 	createAccounts()
