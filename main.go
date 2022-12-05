@@ -1,8 +1,11 @@
 package main
 
-import "github.com/jamesgotech/go-bank-backend/api"
+import (
+	"github.com/jamesgotech/go-bank-backend/api"
+	"github.com/jamesgotech/go-bank-backend/migrations"
+)
 
 func main() {
-	// migrations.Migrate()
+	migrations.MigrateTransactions()
 	api.StartApi()
 }
