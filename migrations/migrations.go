@@ -9,7 +9,7 @@ func createAccounts() {
 	db := helpers.ConnectDB()
 
 	users := [2]interfaces.User{
-		{Username: "James", Email: "james@gotech.com"},
+		{Username: "james", Email: "james@gotech.com"},
 		{Username: "gotech", Email: "gotech@james.com"},
 	}
 
